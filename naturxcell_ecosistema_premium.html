@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATURXCELL | Rebelión Nutricional y BioSinergia Molecular</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Sora (Display) y Outfit (Sans/Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        display: ['Sora', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#070A13',
+                            card: '#0F1524',
+                            accent: '#10B981', // Verde Esmeralda Enzimático
+                            neon: '#34D399',
+                            amber: '#F59E0B',   // Choco-Pump
+                            sky: '#06B6D4',     // Coco-Glow
+                            rose: '#F43F5E',    // Piña-Fiesta
+                            gold: '#D97706'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 16s linear infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Adicional para Robustez Estructural y Tipográfica */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.15); }
+            100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.45); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Prevención de desbordes horizontales accidentales en layouts complejos */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: #070A13;
+        }
+        /* Ajuste de lectura fluida para renderizado óptimo de fuentes en navegadores WebKit */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Estilización de barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070A13;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 9999px;
+            border: 2px solid #070A13;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981;
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans selection:bg-brand-accent selection:text-brand-dark">
+
+    <!-- CONTENEDOR DE TOASTS EN ESQUINA INFERIOR O SUPERIOR DERECHA -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none max-w-sm w-full px-4"></div>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (RESPONSIVA) -->
+    <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logotipo e Identidad -->
+                <a href="#" class="flex items-center space-x-3 group flex-shrink-0">
+                    <div class="relative w-11 h-11 flex items-center justify-center bg-gradient-to-tr from-brand-accent to-brand-neon rounded-xl shadow-lg shadow-brand-accent/20 group-hover:scale-105 transition-all">
+                        <svg class="w-6 h-6 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-amber rounded-full animate-ping"></span>
+                    </div>
+                    <div>
+                        <span class="font-display font-extrabold text-lg tracking-tight text-white block leading-none">NATURXCELL</span>
+                        <span class="text-[9px] font-semibold tracking-[0.18em] text-brand-neon block uppercase mt-1">BioSinergia Molecular</span>
+                    </div>
+                </a>
+
+                <!-- Navegación de Escritorio -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">Inicio</a>
+                    <a href="#manifiesto" class="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">El Sistema</a>
+                    <a href="#cremas" class="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">Cremas</a>
+                    <a href="#protocolo" class="text-sm font-semibold text-gray-300 hover:text-brand-accent transition-colors">Resultados</a>
+                    
+                    <!-- Carrito Estilo Amazon para Escritorio -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-gray-900 border border-gray-800 hover:border-brand-neon rounded-xl text-white transition-all flex items-center gap-2 group">
+                        <svg class="w-5 h-5 text-brand-neon group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="text-xs font-bold hidden lg:inline">Carrito</span>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-brand-rose text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-dark animate-pulse">0</span>
+                    </button>
+
+                    <a href="#comprar" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-dark bg-brand-neon hover:bg-white rounded-lg transition-all shadow-md shadow-brand-neon/10">Combo Ultra $10.80</a>
+                </nav>
+
+                <!-- Botones y Carrito en Móvil -->
+                <div class="flex items-center space-x-3 md:hidden">
+                    <!-- Carrito Móvil -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-gray-900 border border-gray-800 rounded-xl text-white">
+                        <svg class="w-5 h-5 text-brand-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-badge-mobile" class="absolute -top-1.5 -right-1.5 bg-brand-rose text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- Hamburguesa Móvil -->
+                    <button id="mobile-menu-btn" class="flex p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all focus:outline-none">
+                        <svg class="w-6 h-6" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                        <svg class="w-6 h-6 hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Colapsable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800 px-4 pt-4 pb-6 space-y-2 transition-all duration-300">
+            <a href="#inicio" class="block py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-brand-accent transition-all">Inicio</a>
+            <a href="#manifiesto" class="block py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-brand-accent transition-all">El Sistema</a>
+            <a href="#cremas" class="block py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-brand-accent transition-all">Cremas</a>
+            <a href="#protocolo" class="block py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-brand-accent transition-all">Resultados</a>
+            <button onclick="toggleCartDrawer();" class="w-full text-left block py-2.5 px-3 rounded-lg text-sm font-semibold text-brand-neon hover:bg-gray-800 transition-all">Ver Carrito</button>
+            <a href="#comprar" class="block text-center py-3 bg-brand-accent text-brand-dark font-extrabold rounded-lg transition-all shadow-lg text-sm uppercase">Combo Ultra ($10.80)</a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 1: HERO IMPACTO INICIAL -->
+    <section id="inicio" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 px-4">
+        <!-- Luces traseras de desenfoque estructural -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.06),transparent_40%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_85%,rgba(6,182,212,0.05),transparent_40%)]"></div>
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-brand-neon/5 rounded-full filter blur-[80px] pointer-events-none animate-pulse-slow"></div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Bloque Informativo -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-8">
+                <div class="inline-flex items-center space-x-2 bg-brand-accent/10 border border-brand-accent/30 rounded-full px-4 py-2 text-xs font-semibold text-brand-neon tracking-wide uppercase">
+                    <span class="w-2 h-2 bg-brand-neon rounded-full animate-ping"></span>
+                    <span>Envase Deportivo de 255g / 9oz (Plástico PET de alta asimilación)</span>
+                </div>
+
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-white leading-none">
+                    REBELIÓN <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-brand-sky to-brand-amber">
+                        NUTRICIONAL
+                    </span> <br>
+                    MODULAR
+                </h1>
+
+                <p class="text-base sm:text-lg lg:text-xl text-gray-300 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    Supera los suplementos químicos con alta sinergia enzimática en cremas vivas de sabor adictivo. 
+                    <strong class="text-white font-semibold">Optimiza tu metabolismo un 5% cada 24 horas</strong> con nuestro exclusivo Combo Ultra en envases deportivos PET libres de BPA.
+                </p>
+
+                <!-- Acciones Rápidas -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <button onclick="agregarAlCarrito('Combo Ultra (Choco + Piña + 10 Galletas)', 10.80, '1 Choco, 1 Piña, 10 Galletas de Avena')" class="w-full sm:w-auto px-8 py-5 text-base font-extrabold text-brand-dark bg-brand-neon hover:bg-white rounded-xl shadow-2xl shadow-brand-neon/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                        Adquirir Combo Ultra por $10.80
+                    </button>
+                    <a href="#protocolo" class="w-full sm:w-auto px-8 py-5 text-base font-bold text-gray-300 hover:text-white bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-gray-700 rounded-xl transition-all text-center">
+                        Ver Ciclos de Rendimiento
+                    </a>
+                </div>
+
+                <!-- Métricas Biológicas -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-800/80 max-w-md mx-auto lg:mx-0">
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold font-display text-white">765g</span>
+                        <span class="block text-[10px] text-gray-400 mt-1 uppercase">Sinergia Triple</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold font-display text-brand-neon">+50%</span>
+                        <span class="block text-[10px] text-gray-400 mt-1 uppercase">Homeostasis</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-extrabold font-display text-brand-amber">Venezuela</span>
+                        <span class="block text-[10px] text-gray-400 mt-1 uppercase">Sabor Puro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualización Dinámica de Combo (SVG Layered) -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="relative w-72 sm:w-96 h-[400px] sm:h-[450px] bg-gradient-to-b from-brand-card to-brand-dark rounded-3xl border border-gray-800 p-6 sm:p-8 shadow-2xl overflow-hidden flex flex-col justify-between group">
+                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:14px_16px]"></div>
+                    
+                    <div class="flex justify-between items-center relative z-10">
+                        <span class="text-[10px] font-mono text-brand-neon">COMBO_ULTRA_3PACK</span>
+                        <span class="bg-brand-neon/20 text-brand-neon text-[9px] font-extrabold px-2.5 py-1 rounded">TRIPLE ACCIÓN</span>
+                    </div>
+
+                    <!-- Representación Visual del Combo de 3 Frascos de Plástico Deportivo 255g -->
+                    <div class="relative my-auto flex items-end justify-center -space-x-12 animate-float w-full h-56">
+                        <!-- Círculos de Resonancia Enzimática -->
+                        <div class="absolute w-44 h-44 rounded-full border border-dashed border-brand-accent/20 animate-spin-slow"></div>
+                        
+                        <!-- Frasco 1: Piña-Fiesta (Izquierda) -->
+                        <div class="scale-90 -rotate-6 transform origin-bottom opacity-85">
+                            <svg class="w-24 h-36 drop-shadow-[0_10px_15px_rgba(244,63,94,0.25)]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="23" y="8" width="54" height="16" rx="4" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+                                <path d="M20 30 C20 30 14 36 14 42 L14 112 C14 121 22 126 50 126 C78 126 86 121 86 112 L86 42 C86 36 80 30 80 30 Z" fill="#161D2B" stroke="#F43F5E" stroke-width="1.8"/>
+                                <path d="M17 44 Q50 49 83 44 L83 111 C83 117 76 121 50 121 C24 121 17 117 17 111 Z" fill="url(#pina-inside-grad-hero)"/>
+                                <rect x="25" y="60" width="50" height="35" rx="3" fill="#0B0F17" stroke="#F43F5E" stroke-width="1"/>
+                                <text x="50" y="80" fill="#FFFFFF" font-size="6" font-weight="extrabold" text-anchor="middle">PIÑA-FIESTA</text>
+                                <defs>
+                                    <linearGradient id="pina-inside-grad-hero" x1="50" y1="44" x2="50" y2="121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FDA4AF" stop-opacity="0.85"/>
+                                        <stop offset="1" stop-color="#F43F5E" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+
+                        <!-- Frasco 2: Choco-Pump (Centro) -->
+                        <div class="scale-105 z-10 transform origin-bottom">
+                            <svg class="w-28 h-40 drop-shadow-[0_15px_25px_rgba(245,158,11,0.35)]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="23" y="8" width="54" height="16" rx="4" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+                                <path d="M20 30 C20 30 14 36 14 42 L14 112 C14 121 22 126 50 126 C78 126 86 121 86 112 L86 42 C86 36 80 30 80 30 Z" fill="#161D2B" stroke="#F59E0B" stroke-width="1.8"/>
+                                <path d="M17 44 Q50 49 83 44 L83 111 C83 117 76 121 50 121 C24 121 17 117 17 111 Z" fill="url(#choco-inside-grad-hero)"/>
+                                <rect x="22" y="58" width="56" height="38" rx="4" fill="#0B0F17" stroke="#F59E0B" stroke-width="1"/>
+                                <text x="50" y="78" fill="#FFFFFF" font-size="6.5" font-weight="extrabold" text-anchor="middle">CHOCO-PUMP</text>
+                                <text x="50" y="88" fill="#F59E0B" font-size="5" font-weight="bold" text-anchor="middle">ULTRA COMBO</text>
+                                <defs>
+                                    <linearGradient id="choco-inside-grad-hero" x1="50" y1="44" x2="50" y2="121" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FCD34D" stop-opacity="0.85"/>
+                                        <stop offset="1" stop-color="#D97706" stop-opacity="0.95"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+
+                        <!-- Galletas / Elemento de Avena (Detrás, Derecha) -->
+                        <div class="scale-90 rotate-6 transform origin-bottom opacity-85">
+                            <svg class="w-24 h-36 drop-shadow-[0_10px_15px_rgba(16,185,129,0.25)]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="30" fill="#291A0B" stroke="#F59E0B" stroke-width="2"/>
+                                <circle cx="40" cy="40" r="2.5" fill="#1A1108"/>
+                                <circle cx="60" cy="45" r="2" fill="#1A1108"/>
+                                <circle cx="48" cy="62" r="3" fill="#1A1108"/>
+                                <circle cx="58" cy="58" r="2.5" fill="#1A1108"/>
+                                <rect x="15" y="90" width="70" height="25" rx="3" fill="#0B0F17" stroke="#10B981" stroke-width="1"/>
+                                <text x="50" y="106" fill="#FFFFFF" font-size="6" font-weight="extrabold" text-anchor="middle">AVENA CRUNCH</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 relative z-10">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span>Sinergia Sostenida del Combo</span>
+                            <span class="text-brand-neon font-bold">100% Activo</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-brand-neon h-full w-[100%] rounded-full shadow-[0_0_10px_#10B981]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL MANIFIESTO -->
+    <section id="manifiesto" class="py-24 bg-gradient-to-b from-brand-dark via-brand-card/30 to-brand-dark border-t border-b border-gray-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Columna de Procesamiento Técnico (Ilustración Dinámica) -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="relative bg-brand-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <h4 class="font-display font-bold text-lg text-white mb-6 flex items-center gap-2">
+                            <span class="w-3 h-3 bg-brand-neon rounded-full"></span>
+                            Bioprocesamiento Molecular en 30 Minutos
+                        </h4>
+
+                        <!-- Etapas de Emulsión de Activos -->
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-accent/20 border border-brand-accent text-brand-neon flex items-center justify-center font-bold text-sm">
+                                    1
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-white">Selección Orgánica</h5>
+                                    <p class="text-xs text-gray-400 mt-1">Ingredientes nativos de Venezuela recolectados bajo estrictos parámetros de bio-pureza mineral.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-sky/20 border border-brand-sky text-brand-sky flex items-center justify-center font-bold text-sm">
+                                    2
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-white">Molienda Criogénica</h5>
+                                    <p class="text-xs text-gray-400 mt-1">Preserva intactas las enzimas moleculares sensibles al calor para mantener el producto vivo.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-amber/20 border border-brand-amber text-brand-amber flex items-center justify-center font-bold text-sm">
+                                    3
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-white">Envasado Inerte PET</h5>
+                                    <p class="text-xs text-gray-400 mt-1">Envasado hermético en plástico PET deportivo libre de BPA de 255g para máxima estabilidad y portabilidad.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comparativa Química vs NaturXcell -->
+                        <div class="mt-8 pt-6 border-t border-gray-800 grid grid-cols-2 gap-4">
+                            <div class="p-3 bg-red-950/25 border border-red-900/30 rounded-xl">
+                                <span class="block text-red-400 text-[10px] font-extrabold uppercase">Fórmulas Químicas</span>
+                                <span class="block text-sm font-bold text-red-200 mt-1">92% Aditivos / Relleno</span>
+                            </div>
+                            <div class="p-3 bg-brand-accent/10 border border-brand-neon/20 rounded-xl">
+                                <span class="block text-brand-neon text-[10px] font-extrabold uppercase">NaturXcell PET</span>
+                                <span class="block text-sm font-bold text-brand-neon mt-1">100% Activos Vivos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque de Manifesto de Valor -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-8">
+                    <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">EL MANIFIESTO</span>
+                    
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+                        Cero Relleno. Cero Químicos. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-brand-sky">Cremas Completamente Puras.</span>
+                    </h2>
+
+                    <div class="space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg font-light">
+                        <p>
+                            La suplementación tradicional está rota. Tu cuerpo no fue diseñado para asimilar colorantes artificiales ni estimulantes sintéticos que inflaman tu sistema digestivo.
+                        </p>
+                        <p>
+                            En <strong class="text-white font-semibold">NaturXcell</strong> aplicamos ingeniería de valor en formato de cremas y mermeladas puras. Seleccionamos ingredientes vivos de Venezuela y los emulsionamos en frío en un proceso limpio de 30 minutos.
+                        </p>
+                        <p class="border-l-2 border-brand-accent pl-4 text-brand-neon font-medium italic">
+                            Solo ingredientes vivos por fórmula que interactúan para entregar resultados biológicos superiores sin efectos secundarios ni fatiga residual.
+                        </p>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="#cremas" class="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-accent group transition-all">
+                            <span>Explorar las Cremas y Complementos</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: EL MENÚ DE CREMAS ADICTIVAS -->
+    <section id="cremas" class="py-24 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center space-y-4 mb-20">
+                <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">EL CATÁLOGO METABÓLICO</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white">Sabor Intenso, Envase Único</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    Nuestras formulaciones base se presentan en envases deportivos de plástico PET (255g / 9oz) diseñados para proteger la sinergia molecular gástrica.
+                </p>
+            </div>
+
+            <!-- Grilla Principal del Catálogo -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- CREMA 1: CHOCO-PUMP -->
+                <div class="bg-brand-card/60 hover:bg-brand-card border border-gray-800/80 hover:border-brand-amber/50 rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-amber/10 rounded-full blur-3xl group-hover:bg-brand-amber/20 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="bg-brand-amber/10 border border-brand-amber/30 text-brand-amber text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max">
+                                    El Pre-Entreno Estimulante
+                                </span>
+                                <h3 class="font-display font-extrabold text-2xl text-white mt-3">CHOCO-PUMP</h3>
+                            </div>
+                            <span class="text-brand-amber font-display font-bold text-xl">01</span>
+                        </div>
+
+                        <!-- Gráfico Choco-Pump -->
+                        <div class="h-40 flex items-center justify-center my-4 relative">
+                            <div class="absolute w-24 h-24 bg-brand-amber/5 rounded-full filter blur-xl"></div>
+                            <svg class="w-28 h-28 text-brand-amber drop-shadow-[0_8px_15px_rgba(245,158,11,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" class="animate-spin-slow"/>
+                                <path d="M50 30 C35 30 35 60 50 60 C65 60 65 30 50 30 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                                <path d="M50 30 L50 60" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M30 45 L38 52 L32 62" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M70 45 L62 52 L68 62" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+
+                        <p class="text-sm text-gray-300 mb-6 font-light leading-relaxed">
+                            Crema de moca especiada para un bombeo masivo y enfoque mental prolongado.
+                        </p>
+
+                        <div class="bg-brand-dark/80 rounded-2xl p-4 border border-gray-800 space-y-1 mb-6 text-center">
+                            <span class="text-[9px] font-bold text-brand-amber uppercase tracking-wider block">Formato Deportivo 9oz</span>
+                            <div class="text-xs text-gray-400 font-light">
+                                Masa biológica pura de <span class="text-white font-bold">255g</span> libre de excipientes químicos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="border-t border-gray-800 pt-4">
+                            <span class="text-[10px] font-bold text-brand-neon uppercase tracking-wider block">Beneficio Metabólico</span>
+                            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                                Energía limpia y enfoque prolongado sin el bajón o arritmias de estimulantes sintéticos.
+                            </p>
+                        </div>
+                        <button onclick="agregarAlCarrito('Frasco Individual CHOCO-PUMP 255g', 3.50, 'Envase Plástico PET 9oz')" class="w-full mt-6 py-4 bg-brand-amber text-brand-dark font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-white hover:shadow-lg transition-all">
+                            Añadir Frasco • $3.50
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CREMA 2: COCO-GLOW (PRÓXIMAMENTE) -->
+                <div class="bg-brand-card/30 border border-gray-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden opacity-75">
+                    <div class="absolute inset-0 bg-black/40 z-10 backdrop-blur-[1px] flex flex-col justify-center items-center text-center p-4">
+                        <div class="bg-brand-sky/20 border border-brand-sky/50 rounded-full px-4 py-1.5 text-xs font-extrabold text-brand-sky uppercase tracking-widest mb-2">
+                            Próximamente
+                        </div>
+                        <p class="text-xs text-gray-400 max-w-[200px]">Este sabor tropical está en fase final de calibración enzimática.</p>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="bg-brand-sky/10 border border-brand-sky/30 text-brand-sky text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max">
+                                    El Reparador e Hidratante
+                                </span>
+                                <h3 class="font-display font-extrabold text-2xl text-gray-500 mt-3">COCO-GLOW</h3>
+                            </div>
+                            <span class="text-gray-600 font-display font-bold text-xl">02</span>
+                        </div>
+
+                        <div class="h-40 flex items-center justify-center my-4 relative">
+                            <svg class="w-28 h-28 text-gray-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                <circle cx="50" cy="50" r="22" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+
+                        <p class="text-sm text-gray-500 mb-6 font-light">
+                            Mantequilla tropical densa para una hidratación y recuperación mitocondrial profunda.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="border-t border-gray-800/40 pt-4">
+                            <span class="text-[10px] font-bold text-gray-600 uppercase tracking-wider block">Beneficio Metabólico</span>
+                            <p class="text-xs text-gray-500 mt-1">
+                                Restaura las membranas celulares y optimiza la recarga de electrolitos biodisponibles.
+                            </p>
+                        </div>
+                        <button disabled class="w-full mt-6 py-4 bg-gray-900 text-gray-600 font-extrabold text-xs uppercase tracking-wider rounded-xl cursor-not-allowed">
+                            No Disponible
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CREMA 3: PIÑA-FIESTA -->
+                <div class="bg-brand-card/60 hover:bg-brand-card border border-gray-800/80 hover:border-brand-rose/50 rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-rose/10 rounded-full blur-3xl group-hover:bg-brand-rose/20 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="bg-brand-rose/10 border border-brand-rose/30 text-brand-rose text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max">
+                                    El Elíxir Digestivo y Quema-Grasa
+                                </span>
+                                <h3 class="font-display font-extrabold text-2xl text-white mt-3">PIÑA-FIESTA</h3>
+                            </div>
+                            <span class="text-brand-rose font-display font-bold text-xl">03</span>
+                        </div>
+
+                        <!-- Gráfico Piña-Fiesta -->
+                        <div class="h-40 flex items-center justify-center my-4 relative">
+                            <div class="absolute w-24 h-24 bg-brand-rose/5 rounded-full filter blur-xl"></div>
+                            <svg class="w-28 h-28 text-brand-rose drop-shadow-[0_8px_15px_rgba(244,63,94,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" class="animate-spin-slow"/>
+                                <path d="M50 25 L58 35 L58 65 L50 75 L42 65 L42 35 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                                <path d="M50 25 L50 75" stroke="currentColor" stroke-width="1.2"/>
+                                <path d="M42 45 L58 45" stroke="currentColor" stroke-width="1.2"/>
+                                <path d="M42 55 L58 55" stroke="currentColor" stroke-width="1.2"/>
+                                <path d="M50 25 L46 15 L50 18 L54 15 Z" fill="#34D399" stroke="#34D399" stroke-width="1"/>
+                            </svg>
+                        </div>
+
+                        <p class="text-sm text-gray-300 mb-6 font-light leading-relaxed">
+                            Mermelada gelificada viva que estimula los ácidos gástricos y acelera la lipólisis.
+                        </p>
+
+                        <div class="bg-brand-dark/80 rounded-2xl p-4 border border-gray-800 space-y-1 mb-6 text-center">
+                            <span class="text-[9px] font-bold text-brand-rose uppercase tracking-wider block">Formato Deportivo 9oz</span>
+                            <div class="text-xs text-gray-400 font-light">
+                                Masa de asimilación enzimática de <span class="text-white font-bold">255g</span> libre de aditivos inertes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="border-t border-gray-800 pt-4">
+                            <span class="text-[10px] font-bold text-brand-neon uppercase tracking-wider block">Beneficio Metabólico</span>
+                            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                                Desinflama el abdomen inmediatamente activando el consumo calórico sistémico en reposo.
+                            </p>
+                        </div>
+                        <button onclick="agregarAlCarrito('Frasco Individual PIÑA-FIESTA 255g', 3.50, 'Envase Plástico PET 9oz')" class="w-full mt-6 py-4 bg-brand-rose text-white font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-white hover:text-brand-dark hover:shadow-lg transition-all">
+                            Añadir Frasco • $3.50
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO ADICIONAL 4: GELATINA DE FRESA CON PROTEÍNA -->
+                <div class="bg-brand-card/60 hover:bg-brand-card border border-gray-800/80 hover:border-brand-neon/50 rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-neon/10 rounded-full blur-3xl group-hover:bg-brand-neon/20 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max">
+                                    Aporte de Aminoácidos Vivos
+                                </span>
+                                <h3 class="font-display font-extrabold text-xl text-white mt-3">GELATINA DE FRESA + PROT</h3>
+                            </div>
+                            <span class="text-brand-neon font-display font-bold text-xl">04</span>
+                        </div>
+
+                        <!-- Gráfico Gelatina SVG -->
+                        <div class="h-40 flex items-center justify-center my-4 relative">
+                            <div class="absolute w-24 h-24 bg-brand-neon/5 rounded-full filter blur-xl"></div>
+                            <svg class="w-28 h-28 text-brand-neon drop-shadow-[0_8px_15px_rgba(52,211,153,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30 40 L70 40 L75 75 L25 75 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                                <path d="M35 45 Q50 50 65 45 L68 70 Q50 73 32 70 Z" fill="#F43F5E" fill-opacity="0.8"/>
+                                <circle cx="50" cy="55" r="5" fill="#FFFFFF" fill-opacity="0.3"/>
+                            </svg>
+                        </div>
+
+                        <p class="text-sm text-gray-300 mb-6 font-light leading-relaxed">
+                            Gelatina hiperproteica de fresas naturales con colágeno y aislado de proteína biodisponible.
+                        </p>
+
+                        <div class="bg-brand-dark/80 rounded-2xl p-4 border border-gray-800 space-y-1 mb-6 text-center">
+                            <span class="text-[9px] font-bold text-brand-neon uppercase tracking-wider block">Densidad de Aminoácidos</span>
+                            <div class="text-xs text-gray-400 font-light">
+                                Gelificado activo para reparación inmediata de tejidos articulares y musculares.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="border-t border-gray-800 pt-4">
+                            <span class="text-[10px] font-bold text-brand-neon uppercase tracking-wider block">Beneficio Metabólico</span>
+                            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                                Favorece la síntesis de colágeno proteico y acelera la recuperación post-partido o entrenamiento.
+                            </p>
+                        </div>
+                        <button onclick="agregarAlCarrito('Gelatina de Fresa con Proteína', 2.00, 'Envase Individual Colágeno Activo')" class="w-full mt-6 py-4 bg-brand-neon text-brand-dark font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-white hover:shadow-lg transition-all">
+                            Añadir Envase • $2.00
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO ADICIONAL 5: GALLETAS DE AVENA (PACK DE 2) -->
+                <div class="bg-brand-card/60 hover:bg-brand-card border border-gray-800/80 hover:border-brand-amber/50 rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-amber/10 rounded-full blur-3xl group-hover:bg-brand-amber/20 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="bg-brand-amber/10 border border-brand-amber/30 text-brand-amber text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max">
+                                    Carbohidrato Complejo Fibroso
+                                </span>
+                                <h3 class="font-display font-extrabold text-xl text-white mt-3">2 GALLETAS DE AVENA</h3>
+                            </div>
+                            <span class="text-brand-amber font-display font-bold text-xl">05</span>
+                        </div>
+
+                        <!-- Gráfico Galletas SVG -->
+                        <div class="h-40 flex items-center justify-center my-4 relative">
+                            <div class="absolute w-24 h-24 bg-brand-amber/5 rounded-full filter blur-xl"></div>
+                            <svg class="w-28 h-28 text-brand-amber drop-shadow-[0_8px_15px_rgba(245,158,11,0.2)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="45" cy="45" r="22" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="38" cy="38" r="2" fill="#1A1108"/>
+                                <circle cx="52" cy="42" r="1.5" fill="#1A1108"/>
+                                <circle cx="44" cy="52" r="2" fill="#1A1108"/>
+                                
+                                <circle cx="65" cy="65" r="18" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                <circle cx="60" cy="60" r="1.5" fill="#1A1108"/>
+                                <circle cx="70" cy="65" r="1.5" fill="#1A1108"/>
+                            </svg>
+                        </div>
+
+                        <p class="text-sm text-gray-300 mb-6 font-light leading-relaxed">
+                            Galletas densas de avena integral cruda procesada con canela y miel silvestre de Venezuela.
+                        </p>
+
+                        <div class="bg-brand-dark/80 rounded-2xl p-4 border border-gray-800 space-y-1 mb-6 text-center">
+                            <span class="text-[9px] font-bold text-brand-amber uppercase tracking-wider block">Carga de Glucógeno Limpio</span>
+                            <div class="text-xs text-gray-400 font-light">
+                                Fibra prebiótica y carbohidratos de absorción prolongada y estable.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="border-t border-gray-800 pt-4">
+                            <span class="text-[10px] font-bold text-brand-neon uppercase tracking-wider block">Beneficio Metabólico</span>
+                            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                                Optimiza el tránsito gástrico y provee un flujo de energía lineal ideal para resistir entrenamientos largos.
+                            </p>
+                        </div>
+                        <button onclick="agregarAlCarrito('Pack 2 Galletas de Avena', 1.00, 'Carga Fibrosa Natural')" class="w-full mt-6 py-4 bg-brand-amber text-brand-dark font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-white hover:shadow-lg transition-all">
+                            Añadir Pack • $1.00
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CALCULADORA DE COMBINACIÓN MOLECULAR EXTRA (Adaptada a 255g) -->
+            <div class="mt-16 bg-brand-card border border-gray-800 rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="space-y-3 text-center md:text-left">
+                        <span class="bg-brand-neon/10 text-brand-neon text-[10px] font-bold px-3 py-1 rounded-full uppercase">Sinergia Interactiva</span>
+                        <h3 class="font-display font-bold text-2xl text-white">Simula tu Dosis Modular</h3>
+                        <p class="text-xs text-gray-400 max-w-md">Combina tus raciones diarias en envases de plástico de 9oz y complementos para medir la densidad asimilada.</p>
+                    </div>
+                    
+                    <div class="w-full md:w-auto flex flex-wrap gap-4 justify-center">
+                        <div class="flex items-center space-x-2 bg-brand-dark/90 p-3 rounded-xl border border-gray-800">
+                            <span class="text-xs font-semibold text-brand-amber">Choco (9oz):</span>
+                            <input type="number" id="calc-choco" value="1" min="0" max="5" class="w-12 bg-brand-card text-center border border-gray-700 rounded text-xs py-1 text-white focus:outline-none focus:border-brand-amber">
+                        </div>
+                        <div class="flex items-center space-x-2 bg-brand-dark/90 p-3 rounded-xl border border-gray-800">
+                            <span class="text-xs font-semibold text-brand-rose">Piña (9oz):</span>
+                            <input type="number" id="calc-pina" value="1" min="0" max="5" class="w-12 bg-brand-card text-center border border-gray-700 rounded text-xs py-1 text-white focus:outline-none focus:border-brand-rose">
+                        </div>
+                        <div class="flex items-center space-x-2 bg-brand-dark/90 p-3 rounded-xl border border-gray-800">
+                            <span class="text-xs font-semibold text-brand-neon">Gela (Prot):</span>
+                            <input type="number" id="calc-gela" value="1" min="0" max="5" class="w-12 bg-brand-card text-center border border-gray-700 rounded text-xs py-1 text-white focus:outline-none focus:border-brand-neon">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados Sinergia -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-gray-800 text-center">
+                    <div class="p-3 bg-brand-dark/50 rounded-xl">
+                        <span class="block text-xs text-gray-400">Masa Consumida</span>
+                        <span id="res-gramos" class="block text-lg sm:text-xl font-bold font-display text-white mt-1">610g</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark/50 rounded-xl">
+                        <span class="block text-xs text-gray-400">Enzimas Activas</span>
+                        <span id="res-enzimas" class="block text-lg sm:text-xl font-bold font-display text-brand-neon mt-1">69.8M U</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark/50 rounded-xl">
+                        <span class="block text-xs text-gray-400">Calorías Totales</span>
+                        <span id="res-calorias" class="block text-lg sm:text-xl font-bold font-display text-brand-amber mt-1">1,018 Kcal</span>
+                    </div>
+                    <div class="p-3 bg-brand-dark/50 rounded-xl">
+                        <span class="block text-xs text-gray-400">Eficiencia Digestiva</span>
+                        <span id="res-eficiencia" class="block text-lg sm:text-xl font-bold font-display text-brand-sky mt-1">99.8%</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: MODELO DE COMPRA (TARJETA DE PRECIO EXCLUSIVA COMBO ULTRA) -->
+    <section id="comprar" class="py-24 bg-gradient-to-b from-brand-dark via-brand-card/20 to-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.04),transparent_60%)]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center space-y-4 mb-20">
+                <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">PROPUESTA DE VALOR MAESTRA</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white">EL SISTEMA COMBO ULTRA</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    La unificación metabólica definitiva: los dos frascos deportivos principales más carga de carbohidrato fibroso por un precio precalculado imbatible.
+                </p>
+            </div>
+
+            <!-- Presentación Central de Producto Único -->
+            <div class="max-w-xl mx-auto">
+                <div class="bg-gradient-to-b from-brand-card to-brand-dark border-2 border-brand-accent rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 relative shadow-2xl shadow-brand-accent/15">
+                    
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-dark text-[10px] font-extrabold uppercase px-6 py-1.5 rounded-full tracking-widest shadow-lg">
+                        Sinergia Unificada Máxima
+                    </span>
+
+                    <div class="text-center mt-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-neon block mb-1">MÁXIMA HOMEOCINESIS ENZIMÁTICA</span>
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white">Combo Ultra Completo</h3>
+                        <p class="text-xs text-brand-accent mt-2">1x Choco-Pump (255g) + 1x Piña-Fiesta (255g) + 10x Galletas de Avena</p>
+
+                        <div class="my-8 border-t border-b border-gray-800/80 py-6">
+                            <span class="text-xs text-gray-400 block uppercase tracking-wider">Inversión Nutricional Integrada</span>
+                            <span class="font-display font-extrabold text-5xl sm:text-6xl text-brand-neon tracking-tight mt-1 inline-block">$10.80</span>
+                            <span class="text-xs text-brand-neon font-semibold block mt-2">Todo-en-Uno (Más de 500g de cremas + Avena Crunch)</span>
+                        </div>
+
+                        <ul class="space-y-4 mb-8 text-sm text-left max-w-sm mx-auto">
+                            <li class="flex items-start gap-3 text-gray-300">
+                                <svg class="w-5 h-5 text-brand-neon flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                <span>2 Envases deportivos ultraligeros de 255g de plástico PET (BPA-free)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-gray-300">
+                                <svg class="w-5 h-5 text-brand-neon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                <span>10 Galletas densas de avena integral y miel silvestre</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-gray-300">
+                                <svg class="w-5 h-5 text-brand-neon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Ahorro del 38% respecto al precio de adquisición por separado</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button onclick="agregarAlCarrito('Sistema Combo Ultra Completo', 10.80, '1x Choco, 1x Piña, 10x Galletas de Avena')" class="w-full py-4 bg-brand-accent hover:bg-white text-brand-dark font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-brand-accent/20 transition-all">
+                        Iniciar Ciclo Ultra ($10.80)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: MODO DE USO -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(6,182,212,0.05),transparent_30%)]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">MODO DE USO MULTIPROPÓSITO</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">¿Cómo integrar NaturXcell en tu vida?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    No necesitas preparaciones complejas. Formulado para asimilación mucosa gástrica inmediata.
+                </p>
+            </div>
+
+            <!-- Grid de Métodos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Método 1 -->
+                <div class="bg-brand-card/40 border border-gray-800 p-8 rounded-3xl space-y-4 hover:border-brand-neon/30 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-neon/10 flex items-center justify-center text-brand-neon font-display font-bold text-lg group-hover:scale-110 transition-transform">
+                        01
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Disparo Express</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Directo de nuestro envase deportivo de plástico de 255g a la boca usando una cucharilla para energía inmediata antes de entrenar en el fútbol o gimnasio.
+                    </p>
+                </div>
+
+                <!-- Método 2 -->
+                <div class="bg-brand-card/40 border border-gray-800 p-8 rounded-3xl space-y-4 hover:border-brand-sky/30 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-sky/10 flex items-center justify-center text-brand-sky font-display font-bold text-lg group-hover:scale-110 transition-transform">
+                        02
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Elíxir Instantáneo</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Mezcla una cucharada grande de tu mermelada en un vaso de agua fría para refrescar. Las partículas bioactivas se dispersan creando un néctar isotónico de alta asimilación.
+                    </p>
+                </div>
+
+                <!-- Método 3 -->
+                <div class="bg-brand-card/40 border border-gray-800 p-8 rounded-3xl space-y-4 hover:border-brand-amber/30 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-amber/10 flex items-center justify-center text-brand-amber font-display font-bold text-lg group-hover:scale-110 transition-transform">
+                        03
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Toque Élite</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Untado directamente sobre cambur, avena, pan tostado o tus comidas pre/post-entrenamiento favoritas para elevar el perfil enzimático del plato.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 6: GRÁFICA DE EVOLUCIÓN PROTOCOLO 2-2-2 -->
+    <section id="protocolo" class="py-24 bg-gradient-to-b from-brand-dark via-brand-card/40 to-brand-dark border-t border-gray-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Columna Texto e Instructivo -->
+                <div class="lg:col-span-5 space-y-8">
+                    <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">BIOMETRÍA Y PROGRESO ACUMULADO</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+                        Gráfica de Evolución <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-brand-sky">Protocolo 2-2-2</span>
+                    </h2>
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        Nuestro protocolo clínicamente estructurado activa la homeostasis celular de manera escalonada. Utiliza el simulador interactivo de la derecha para visualizar tu proyección celular a lo largo del tiempo.
+                    </p>
+
+                    <!-- Lista de Metas del Protocolo -->
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <span class="w-1.5 h-1.5 bg-brand-neon rounded-full mt-2"></span>
+                            <div>
+                                <strong class="text-white block font-medium">Día 0 — Rendimiento Cero:</strong>
+                                <span class="text-sm text-gray-400">Punto de partida con fatiga acumulada, inflamación y baja asimilación de nutrientes.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="w-1.5 h-1.5 bg-brand-neon rounded-full mt-2"></span>
+                            <div>
+                                <strong class="text-white block font-medium">Día 1 al 2 — Reset Digestivo (5%):</strong>
+                                <span class="text-sm text-gray-400">Desinflamación del intestino delgado, activación de flora gástrica benéfica.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="w-1.5 h-1.5 bg-brand-neon rounded-full mt-2"></span>
+                            <div>
+                                <strong class="text-white block font-medium">Día 14 — Cambio Físico Visible (20%):</strong>
+                                <span class="text-sm text-gray-400">Aumento de energía basal en reposo, mejor tono muscular y digestión perfecta.</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="w-1.5 h-1.5 bg-brand-neon rounded-full mt-2"></span>
+                            <div>
+                                <strong class="text-white block font-medium">Día 60 — Homeostasis Élite (50%):</strong>
+                                <span class="text-sm text-gray-400">Optimización celular continua, regeneración mitocondrial acelerada.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Gráfica Interactiva SVG con Controles -->
+                <div class="lg:col-span-7">
+                    <div class="bg-brand-card border border-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="absolute top-4 right-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-brand-neon rounded-full animate-ping"></span>
+                            <span class="text-[10px] font-mono text-brand-neon">MÉTRICA ACTIVA</span>
+                        </div>
+
+                        <h3 class="font-display font-bold text-xl text-white mb-2">Simulador de Optimización Celular</h3>
+                        <p class="text-xs text-gray-400 mb-6">Mueve el control deslizante para simular los días de consumo.</p>
+
+                        <!-- Controles de Simulación -->
+                        <div class="mb-6 space-y-3">
+                            <div class="flex justify-between text-sm font-medium">
+                                <span class="text-gray-300">Días transcurridos:</span>
+                                <span id="label-dias" class="text-brand-neon font-bold text-lg">Día 14</span>
+                            </div>
+                            <input type="range" id="slider-dias" min="0" max="60" value="14" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-neon">
+                            <div class="flex justify-between text-[10px] text-gray-500 font-mono">
+                                <span>DÍA 0</span>
+                                <span>DÍA 2</span>
+                                <span>DÍA 14</span>
+                                <span>DÍA 30</span>
+                                <span>DÍA 60</span>
+                            </div>
+                        </div>
+
+                        <!-- Gráfico SVG Dinámico -->
+                        <div class="relative bg-brand-dark/90 rounded-2xl p-4 border border-gray-800/80 overflow-hidden">
+                            <svg id="svg-grafico" class="w-full h-56" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="10" y1="180" x2="490" y2="180" stroke="#1F2937" stroke-width="1"/>
+                                <line x1="10" y1="140" x2="490" y2="140" stroke="#1F2937" stroke-width="0.5" stroke-dasharray="2 2"/>
+                                <line x1="10" y1="100" x2="490" y2="100" stroke="#1F2937" stroke-width="0.5" stroke-dasharray="2 2"/>
+                                <line x1="10" y1="60" x2="490" y2="60" stroke="#1F2937" stroke-width="0.5" stroke-dasharray="2 2"/>
+                                <line x1="10" y1="20" x2="490" y2="20" stroke="#1F2937" stroke-width="1"/>
+
+                                <text x="15" y="175" fill="#4B5563" font-size="8" font-family="monospace">0%</text>
+                                <text x="15" y="135" fill="#4B5563" font-size="8" font-family="monospace">15%</text>
+                                <text x="15" y="95" fill="#4B5563" font-size="8" font-family="monospace">30%</text>
+                                <text x="15" y="55" fill="#4B5563" font-size="8" font-family="monospace">45%</text>
+                                <text x="15" y="15" fill="#4B5563" font-size="8" font-family="monospace">60%</text>
+
+                                <path id="curva-optima" d="M 50 180 Q 150 160, 250 120 T 450 60" fill="none" stroke="#1F2937" stroke-width="2" stroke-dasharray="4 4"/>
+                                <path id="curva-real" d="" fill="none" stroke="url(#line-grad)" stroke-width="4" stroke-linecap="round"/>
+                                <circle id="marcador-nodo" cx="50" cy="180" r="7" fill="#10B981" stroke="#FFFFFF" stroke-width="2" class="shadow-lg"/>
+
+                                <defs>
+                                    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#10B981"/>
+                                        <stop offset="50%" stop-color="#34D399"/>
+                                        <stop offset="100%" stop-color="#06B6D4"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+
+                        <!-- Indicadores Biométricos Dinámicos -->
+                        <div class="grid grid-cols-3 gap-4 mt-6">
+                            <div class="p-3 bg-brand-dark rounded-xl text-center">
+                                <span class="text-[10px] text-gray-400 block uppercase">Optimización Celular</span>
+                                <span id="opt-porcentaje" class="text-lg sm:text-xl font-bold font-display text-brand-neon">0%</span>
+                            </div>
+                            <div class="p-3 bg-brand-dark rounded-xl text-center">
+                                <span class="text-[10px] text-gray-400 block uppercase">Asimilación Enzimas</span>
+                                <span id="opt-asimilacion" class="text-sm sm:text-base font-bold font-display text-brand-sky">Pobre</span>
+                            </div>
+                            <div class="p-3 bg-brand-dark rounded-xl text-center">
+                                <span class="text-[10px] text-gray-400 block uppercase">Bio-Resonancia</span>
+                                <span id="opt-resonancia" class="text-sm sm:text-base font-bold font-display text-brand-amber">Estable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ADICIONAL: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-bold tracking-widest text-brand-neon uppercase block">CONOCIMIENTO PROFUNDO</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">Preguntas Frecuentes</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Todo lo que necesitas comprender sobre las cremas vivas hiper-activas.</p>
+            </div>
+
+            <!-- Acordeón FAQ -->
+            <div class="space-y-4">
+                
+                <div class="bg-brand-card border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(1)" class="w-full p-6 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-display font-bold text-base md:text-lg text-white">¿Por qué el Sistema Ultra consta de Choco, Piña y Galletas?</span>
+                        <svg id="faq-icon-1" class="w-5 h-5 text-brand-neon transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-1" class="hidden p-6 pt-0 border-t border-gray-800/40 text-sm text-gray-300 leading-relaxed font-light space-y-2">
+                        <p>La combinación del pre-entreno activador (Choco-Pump) y el tónico digestivo lipolítico (Piña-Fiesta) se complementa de forma ideal con la energía fibrosa de la avena integral.</p>
+                        <p>El **Sistema Ultra** unifica estos elementos por una tarifa precalculada insuperable de **$10.80** para asegurar el cumplimiento perfecto del protocolo metabólico diario sin que te falte ningún componente.</p>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(2)" class="w-full p-6 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-display font-bold text-base md:text-lg text-white">¿Por qué NaturXcell utiliza envases PET deportivos?</span>
+                        <svg id="faq-icon-2" class="w-5 h-5 text-brand-neon transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-2" class="hidden p-6 pt-0 border-t border-gray-800/40 text-sm text-gray-300 leading-relaxed font-light space-y-2">
+                        <p>El plástico PET de ingeniería grado alimentario (BPA-free) de 255g (9 oz) es ligero, hermético e irrompible.</p>
+                        <p>A diferencia de los envases de vidrio, permite que los deportistas lleven su dosis enzimática al campo de fútbol, pista u oficina de forma práctica y segura sin riesgo de rupturas accidentales.</p>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFaq(3)" class="w-full p-6 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-display font-bold text-base md:text-lg text-white">¿Qué pasa si combino los complementos con las cremas?</span>
+                        <svg id="faq-icon-3" class="w-5 h-5 text-brand-neon transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="faq-content-3" class="hidden p-6 pt-0 border-t border-gray-800/40 text-sm text-gray-300 leading-relaxed font-light space-y-2">
+                        <p>¡Potencias los resultados! Untar la mermelada Piña-Fiesta o el Choco-Pump sobre nuestras galletas de avena integral o acompañar la tarde con la Gelatina de Fresa con proteína acelera la síntesis muscular y la recuperación celular en reposo.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DRAWER LATERAL DEL CARRITO DE COMPRAS (Estilo Amazon) -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/70 z-40 hidden transition-opacity duration-300" onclick="toggleCartDrawer()"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-brand-card border-l border-gray-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        
+        <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-brand-dark/50">
+            <div class="flex items-center space-x-2">
+                <svg class="w-6 h-6 text-brand-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <h3 class="font-display font-bold text-lg text-white">Tu Pedido Enzimático (PET)</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-gray-800/80 transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Contenedor de Items -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div class="text-center py-12 text-gray-500">
+                <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+                <p class="text-sm">Tu carrito de envases de 9oz está vacío.</p>
+                <button onclick="toggleCartDrawer()" class="mt-4 text-xs font-bold text-brand-neon uppercase tracking-wider underline">Explorar Productos</button>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-800 bg-brand-dark/80 space-y-4">
+            <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-400">Subtotal de la Orden:</span>
+                <span id="cart-total" class="text-2xl font-display font-bold text-white">$0.00</span>
+            </div>
+            <p class="text-[10px] text-brand-neon text-center">✓ Envío exprés deportivo a toda Venezuela</p>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="vaciarCarrito()" class="py-3 px-4 bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all border border-gray-800">
+                    Vaciar
+                </button>
+                <button onclick="procederAlCheckout()" id="btn-proceder-pago" disabled class="py-3 px-4 bg-brand-neon disabled:opacity-50 disabled:cursor-not-allowed text-brand-dark rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-white transition-all flex items-center justify-center gap-1">
+                    <span>Proceder al Pago</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT / FORMULARIO -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-dark/95 backdrop-blur-sm transition-all duration-300">
+        <div class="bg-brand-card w-full max-w-lg rounded-3xl border border-gray-800 overflow-hidden shadow-2xl relative">
+            
+            <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-brand-dark/50">
+                <div>
+                    <h3 class="font-display font-bold text-lg text-white">Formulario de Pedido Directo</h3>
+                    <p class="text-xs text-brand-neon">Despacho de Frascos de 255g PET (9oz) en Venezuela</p>
+                </div>
+                <button onclick="cerrarCompra()" class="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <form id="checkout-form" onsubmit="procesarPedido(event)" class="p-6 space-y-4">
+                
+                <div class="bg-brand-dark rounded-2xl p-4 border border-gray-800/80 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Resumen del Carrito</span>
+                        <span id="checkout-total-items" class="text-[10px] bg-brand-neon/15 text-brand-neon px-2.5 py-0.5 rounded-full font-bold">0 envases</span>
+                    </div>
+                    <div id="checkout-items-list" class="max-h-24 overflow-y-auto space-y-1 text-xs text-gray-300 pr-2"></div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-2 text-sm font-bold text-white">
+                        <span>Monto Total de tu Orden:</span>
+                        <span id="checkout-total-precio" class="text-brand-neon">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="block text-[10px] font-bold text-brand-neon uppercase tracking-widest">Información de Facturación y Despacho</label>
+                    
+                    <div>
+                        <input type="text" id="checkout-nombre" placeholder="Nombre y Apellido completo" required 
+                               class="w-full bg-brand-dark border border-gray-800 focus:border-brand-neon rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <select id="checkout-cedula-tipo" class="bg-brand-dark border border-gray-800 rounded-xl px-2 py-3 text-sm text-white focus:outline-none focus:border-brand-neon">
+                            <option value="V">V- (Venezolano)</option>
+                            <option value="E">E- (Extranjero)</option>
+                            <option value="J">J- (Jurídico)</option>
+                        </select>
+                        <input type="number" id="checkout-cedula" placeholder="Cédula de Identidad" required 
+                               class="col-span-2 w-full bg-brand-dark border border-gray-800 focus:border-brand-neon rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="tel" id="checkout-telefono" placeholder="Número Telefónico" required 
+                               class="w-full bg-brand-dark border border-gray-800 focus:border-brand-neon rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                        
+                        <select id="checkout-metodo-pago" class="w-full bg-brand-dark border border-gray-800 focus:border-brand-neon rounded-xl px-4 py-3 text-sm text-white focus:outline-none">
+                            <option value="Pago Móvil">Pago Móvil (BS)</option>
+                            <option value="Binance Pay">Binance Pay (USDT)</option>
+                            <option value="Transferencia">Transferencia Nacional</option>
+                            <option value="Efectivo / Delivery">Efectivo (Delivery)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <textarea id="checkout-direccion" placeholder="Dirección exacta de entrega (Calle, Casa/Apto, Ciudad, Estado)" required rows="2"
+                                  class="w-full bg-brand-dark border border-gray-800 focus:border-brand-neon rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 mt-2 bg-brand-neon hover:bg-white text-brand-dark font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                    <span>Confirmar y Enviar a Instagram</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE ÉXITO Y COPIADO AUTOMÁTICO -->
+    <div id="success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-dark/95 backdrop-blur-md transition-all duration-300">
+        <div class="bg-brand-card w-full max-w-md rounded-3xl border border-brand-accent/50 p-6 sm:p-8 shadow-2xl relative text-center space-y-6">
+            
+            <div class="w-16 h-16 bg-brand-accent/15 border border-brand-neon rounded-full flex items-center justify-center mx-auto text-brand-neon animate-bounce">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="font-display font-extrabold text-2xl text-white">¡Pedido Copiado!</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Hemos generado y copiado tu orden de compra al portapapeles de tu dispositivo de manera automática.
+                </p>
+                <div class="p-3 bg-brand-dark/80 rounded-xl text-left border border-gray-800 text-xs font-mono text-gray-400 max-h-28 overflow-y-auto mt-4">
+                    <span class="text-brand-neon block font-bold uppercase tracking-wider mb-1">Vista previa copiada:</span>
+                    <span id="preview-text">Generando...</span>
+                </div>
+            </div>
+
+            <div class="bg-brand-dark p-4 rounded-2xl border border-gray-800 text-xs text-left space-y-2 text-gray-400">
+                <p class="font-semibold text-white flex items-center gap-1.5">
+                    <span class="w-2 h-2 bg-brand-amber rounded-full"></span>
+                    ¿Qué debes hacer ahora?
+                </p>
+                <p>1. Haz clic en el botón de abajo para ir a nuestro chat de Instagram.</p>
+                <p>2. Mantén presionado en el chat, selecciona <strong class="text-white">"Pegar"</strong> y envíanos el mensaje.</p>
+            </div>
+
+            <button onclick="redirigirInstagram()" class="w-full py-4 bg-brand-neon hover:bg-white text-brand-dark font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                <span>Ir a Instagram & Pegar</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOCKUP DEL PIE DE PÁGINA (FOOTER) -->
+    <footer class="bg-brand-dark border-t border-gray-900 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 flex items-center justify-center bg-brand-neon rounded-lg shadow-lg">
+                            <svg class="w-5 h-5 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-display font-bold text-base text-white block">NATURXCELL</span>
+                            <span class="text-[8px] font-semibold tracking-wider text-brand-neon uppercase">BioSinergia Molecular</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        Rebelión nutricional basada en la ciencia biológica de enzimas puras nativas de Venezuela. Conservación activa en envase inerte de plástico deportivo de 255g.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-semibold text-sm text-white mb-4 uppercase tracking-wider">Enlaces</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-brand-accent transition-colors">Inicio</a></li>
+                        <li><a href="#manifiesto" class="text-gray-400 hover:text-brand-accent transition-colors">El Sistema</a></li>
+                        <li><a href="#cremas" class="text-gray-400 hover:text-brand-accent transition-colors">Cremas Vivas</a></li>
+                        <li><a href="#protocolo" class="text-gray-400 hover:text-brand-accent transition-colors">Resultados Biométricos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-semibold text-sm text-white mb-4 uppercase tracking-wider">Ciencia Botánica</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li>Emulsiones Macromoleculares en frío</li>
+                        <li>Envase de plástico deportivo libre de BPA</li>
+                        <li>Preservación biológica activa</li>
+                        <li>Aporte mitocondrial sostenido</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-display font-semibold text-sm text-white uppercase tracking-wider">Origen Orgulloso</h4>
+                    <p class="text-xs text-brand-neon leading-relaxed">
+                        Hecho con orgullo, rigor y ciencia vegetal en Venezuela.
+                    </p>
+                    <div class="border-t border-gray-800/80 pt-4">
+                        <span class="block text-[10px] text-gray-500 font-mono">LABORATORIOS NATURXCELL, C.A.</span>
+                        <span class="block text-[10px] text-gray-500 font-mono">Derechos reservados 2026.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500">
+                <span>&copy; 2026 NaturXcell BioSinergia Molecular. Todos los derechos reservados.</span>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-brand-accent transition-colors">Términos de Servicio</a>
+                    <a href="#" class="hover:text-brand-accent transition-colors">Políticas de Privacidad</a>
+                    <a href="#" class="hover:text-brand-accent transition-colors">Contacto de Soporte</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE INTERACCIÓN INTEGRADA (JAVASCRIPT) -->
+    <script>
+        // --- 1. CONFIGURACIÓN DEL SISTEMA DE CARRITO (Estilo Amazon) ---
+        let carrito = [];
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            
+            const isOpen = !drawer.classList.contains('translate-x-full');
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                renderCart();
+            }
+        }
+
+        function agregarAlCarrito(nombre, precio, detalles) {
+            const itemExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (itemExistente) {
+                itemExistente.cantidad += 1;
+            } else {
+                carrito.push({
+                    id: Date.now() + Math.random().toString(36).substr(2, 9),
+                    nombre: nombre,
+                    precio: parseFloat(precio),
+                    detalles: detalles,
+                    cantidad: 1
+                });
+            }
+            
+            actualizarInsigniasCarrito();
+            showNotification(
+                "¡Envase Añadido!",
+                `"${nombre}" ha sido agregado a tu pedido de plástico activo.`,
+                "success"
+            );
+            
+            const cartBadge = document.getElementById('cart-badge');
+            cartBadge.classList.add('scale-110');
+            setTimeout(() => cartBadge.classList.remove('scale-110'), 300);
+
+            renderCart();
+        }
+
+        function actualizarInsigniasCarrito() {
+            const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            document.getElementById('cart-badge').textContent = totalItems;
+            document.getElementById('cart-badge-mobile').textContent = totalItems;
+        }
+
+        function cambiarCantidad(id, cambio) {
+            const item = carrito.find(item => item.id === id);
+            if (item) {
+                item.cantidad += cambio;
+                if (item.cantidad <= 0) {
+                    eliminarDelCarrito(id);
+                } else {
+                    renderCart();
+                    actualizarInsigniasCarrito();
+                }
+            }
+        }
+
+        function eliminarDelCarrito(id) {
+            const item = carrito.find(item => item.id === id);
+            carrito = carrito.filter(item => item.id !== id);
+            renderCart();
+            actualizarInsigniasCarrito();
+            if (item) {
+                showNotification(
+                    "Item Removido",
+                    `${item.nombre} ha sido eliminado de tu carrito.`,
+                    "warn"
+                );
+            }
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            renderCart();
+            actualizarInsigniasCarrito();
+            showNotification(
+                "Carrito Vacío",
+                "Se han removido todos los envases de tu pedido.",
+                "warn"
+            );
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const totalLabel = document.getElementById('cart-total');
+            const btnProceder = document.getElementById('btn-proceder-pago');
+
+            if (carrito.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <p class="text-sm">Tu carrito de envases de 9oz está vacío.</p>
+                        <button onclick="toggleCartDrawer()" class="mt-4 text-xs font-bold text-brand-neon uppercase tracking-wider underline">Explorar Productos</button>
+                    </div>
+                `;
+                totalLabel.textContent = "$0.00";
+                btnProceder.disabled = true;
+                return;
+            }
+
+            btnProceder.disabled = false;
+            let total = 0;
+            let html = '<div class="space-y-4">';
+
+            carrito.forEach(item => {
+                const subtotalItem = item.precio * item.cantidad;
+                total += subtotalItem;
+
+                html += `
+                    <div class="bg-brand-dark/50 border border-gray-800/80 p-4 rounded-2xl flex items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold text-white line-clamp-1">${item.nombre}</h4>
+                            <p class="text-[11px] text-gray-400 mt-0.5">${item.detalles}</p>
+                            <span class="text-xs font-extrabold text-brand-neon block mt-1">$${item.precio.toFixed(2)} c/u</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="text-xs font-extrabold text-white font-display">$${subtotalItem.toFixed(2)}</span>
+                            <div class="flex items-center bg-brand-dark border border-gray-800 rounded-lg p-1">
+                                <button onclick="cambiarCantidad('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded">-</button>
+                                <span class="w-8 text-center text-xs font-bold text-white">${item.cantidad}</span>
+                                <button onclick="cambiarCantidad('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 rounded">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+            totalLabel.textContent = `$${total.toFixed(2)}`;
+        }
+
+
+        // --- 2. PREPARACIÓN E INICIO DEL CHECKOUT ---
+        function procederAlCheckout() {
+            toggleCartDrawer();
+            
+            const checkoutItemsList = document.getElementById('checkout-items-list');
+            const checkoutTotalItems = document.getElementById('checkout-total-items');
+            const checkoutTotalPrecio = document.getElementById('checkout-total-precio');
+
+            let total = 0;
+            let itemsCount = 0;
+            let itemsHtml = '';
+
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                itemsCount += item.cantidad;
+                itemsHtml += `
+                    <div class="flex justify-between py-1 border-b border-gray-800/30">
+                        <span>${item.cantidad}x ${item.nombre}</span>
+                        <span class="font-mono text-gray-400">$${subtotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            checkoutItemsList.innerHTML = itemsHtml;
+            checkoutTotalItems.textContent = `${itemsCount} ${itemsCount === 1 ? 'unidad' : 'unidades'}`;
+            checkoutTotalPrecio.textContent = `$${total.toFixed(2)}`;
+
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function cerrarCompra() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+
+        // --- 3. COPIADO AUTOMÁTICO DE DATOS DE LA ORDEN Y REDIRECCIÓN A INSTAGRAM ---
+        let mensajeGlobalInstagram = "";
+
+        function copyTextToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed'; 
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            let success = false;
+            try {
+                success = document.execCommand('copy');
+            } catch (err) {
+                console.error('Error al intentar copiar al portapapeles', err);
+            }
+            document.body.removeChild(textarea);
+            return success;
+        }
+
+        function procesarPedido(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('checkout-nombre').value.trim();
+            const cedulaTipo = document.getElementById('checkout-cedula-tipo').value;
+            const cedula = document.getElementById('checkout-cedula').value.trim();
+            const telefono = document.getElementById('checkout-telefono').value.trim();
+            const metodoPago = document.getElementById('checkout-metodo-pago').value;
+            const direccion = document.getElementById('checkout-direccion').value.trim();
+
+            if (!nombre || !cedula || !telefono || !direccion) {
+                showNotification("Error de Formulario", "Por favor completa todos los campos requeridos.", "warn");
+                return;
+            }
+
+            let desgloseMensaje = '';
+            let totalGeneral = 0;
+            
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                totalGeneral += subtotal;
+                desgloseMensaje += `• ${item.cantidad}x ${item.nombre} - ($${subtotal.toFixed(2)})\n`;
+            });
+
+            mensajeGlobalInstagram = 
+`🌱 NATURXCELL - ORDEN DE COMPRA MAESTRA (9oz) 🌱
+
+👤 Cliente: ${nombre}
+🪪 Cédula: ${cedulaTipo}-${cedula}
+📞 Teléfono: ${telefono}
+📍 Dirección de Entrega: ${direccion}
+
+🛒 DESGLOSE DEL PEDIDO (Plástico PET BPA-free):
+${desgloseMensaje}
+💰 Monto Total: $${totalGeneral.toFixed(2)}
+💵 Método de Pago: ${metodoPago}
+
+━━━━━━━━━━━━━━━━━━━━━
+Hola NaturXcell, acabo de finalizar mi orden de compra. Deseo formalizar el despacho exprés de mis envases de 255g en Venezuela.`;
+
+            const copiadoExitoso = copyTextToClipboard(mensajeGlobalInstagram);
+
+            cerrarCompra();
+            
+            document.getElementById('preview-text').textContent = mensajeGlobalInstagram;
+            const successModal = document.getElementById('success-modal');
+            successModal.classList.remove('hidden');
+
+            if (copiadoExitoso) {
+                showNotification(
+                    "¡Copiado Exitosamente!",
+                    "Tu orden de compra ya está guardada en tu portapapeles.",
+                    "success"
+                );
+            } else {
+                showNotification(
+                    "Pedido Generado",
+                    "Por favor, selecciona y copia el texto del cuadro manualmente.",
+                    "warn"
+                );
+            }
+        }
+
+        function redirigirInstagram() {
+            const urlInstagram = "https://www.instagram.com/naturxcell?igsh=MWwwZW5rZDc3M2RjYw==";
+            window.open(urlInstagram, '_blank');
+            
+            document.getElementById('success-modal').classList.add('hidden');
+            carrito = [];
+            actualizarInsigniasCarrito();
+        }
+
+
+        // --- 4. CONFIGURACIÓN DEL MENÚ MÓVIL ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+
+
+        // --- 5. SISTEMA DE NOTIFICACIONES TOAST ---
+        function showNotification(title, message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded-2xl border bg-brand-card/95 backdrop-blur-md shadow-2xl flex items-start gap-3 w-full pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300 ${
+                type === 'success' ? 'border-brand-accent' : 'border-brand-amber'
+            }`;
+
+            toast.innerHTML = `
+                <div class="flex-shrink-0 w-6 h-6 rounded-lg flex items-center justify-center ${
+                    type === 'success' ? 'bg-brand-neon/15 text-brand-neon' : 'bg-brand-amber/15 text-brand-amber'
+                }">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="${
+                            type === 'success' ? 'M5 13l4 4L19 7' : 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+                        }"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h5 class="font-display font-bold text-sm text-white">${title}</h5>
+                    <p class="text-xs text-gray-400 mt-0.5">${message}</p>
+                </div>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4000);
+        }
+
+
+        // --- 6. CALCULADORA INTERACTIVA DE COMBINACIÓN MOLECULAR (Base 255g por frasco) ---
+        const inputChoco = document.getElementById('calc-choco');
+        const inputPina = document.getElementById('calc-pina');
+        const inputGela = document.getElementById('calc-gela');
+
+        const resGramos = document.getElementById('res-gramos');
+        const resEnzimas = document.getElementById('res-enzimas');
+        const resCalorias = document.getElementById('res-calorias');
+        const resEficiencia = document.getElementById('res-eficiencia');
+
+        function actualizarCalculos() {
+            const choco = parseInt(inputChoco.value) || 0;
+            const pina = parseInt(inputPina.value) || 0;
+            const gela = parseInt(inputGela.value) || 0;
+
+            const gramos = (choco * 255) + (pina * 255) + (gela * 100); 
+            
+            const enzimas = ((choco + pina) * 29.3 + (gela * 11.2)).toFixed(1);
+            const calorias = (choco * 510 + pina * 376 + gela * 132);
+            
+            let eficiencia = 0;
+            const totalTomas = choco + pina + gela;
+            if (totalTomas > 0) {
+                const balanceSinergico = Math.min(choco, pina);
+                eficiencia = 85 + (balanceSinergico * 4.5) + (totalTomas * 1.5);
+                if (eficiencia > 99.8) eficiencia = 99.8;
+            }
+
+            resGramos.textContent = `${gramos}g`;
+            resEnzimas.textContent = `${enzimas}M U`;
+            resCalorias.textContent = `${calorias} Kcal`;
+            resEficiencia.textContent = `${eficiencia.toFixed(1)}%`;
+        }
+
+        [inputChoco, inputPina, inputGela].forEach(input => {
+            if (input) {
+                input.addEventListener('input', actualizarCalculos);
+            }
+        });
+
+
+        // --- 7. SIMULADOR DE PROTOCOLO GRÁFICO 2-2-2 (Día a Día) ---
+        const sliderDias = document.getElementById('slider-dias');
+        const labelDias = document.getElementById('label-dias');
+        const optPorcentaje = document.getElementById('opt-porcentaje');
+        const optAsimilacion = document.getElementById('opt-asimilacion');
+        const optResonancia = document.getElementById('opt-resonancia');
+        const curvaReal = document.getElementById('curva-real');
+        const marcadorNodo = document.getElementById('marcador-nodo');
+
+        function actualizarSimuladorGrafico() {
+            const dias = parseInt(sliderDias.value);
+            labelDias.textContent = `Día ${dias}`;
+
+            let porcentajeOptimizado = 0;
+            let asimilacion = "Pobre";
+            let resonancia = "Estable";
+
+            if (dias === 0) {
+                porcentajeOptimizado = 0;
+                asimilacion = "Pobre";
+                resonancia = "Inestable";
+            } else if (dias <= 2) {
+                porcentajeOptimizado = Math.round((dias / 2) * 5);
+                asimilacion = "Activándose";
+                resonancia = "Sincrónica";
+            } else if (dias <= 14) {
+                const progresoFraccionario = (dias - 2) / 12;
+                porcentajeOptimizado = Math.round(5 + (progresoFraccionario * 15));
+                asimilacion = "Elevada";
+                resonancia = "Sinergia Media";
+            } else {
+                const progresoFraccionario = (dias - 14) / 46;
+                porcentajeOptimizado = Math.round(20 + (progresoFraccionario * 30));
+                asimilacion = "Élite Absoluta";
+                resonancia = "Sinergia Sostenida";
+            }
+
+            optPorcentaje.textContent = `+${porcentajeOptimizado}%`;
+            optAsimilacion.textContent = asimilacion;
+            optResonancia.textContent = resonancia;
+
+            const anchoTotal = 400;
+            const pasoX = (dias / 60) * anchoTotal;
+            const xFinal = 50 + pasoX;
+            const yFinal = 180 - (porcentajeOptimizado * 2);
+
+            curvaReal.setAttribute('d', `M 50 180 Q ${50 + (pasoX/2)} ${180 - (porcentajeOptimizado * 1.5)}, ${xFinal} ${yFinal}`);
+            marcadorNodo.setAttribute('cx', xFinal);
+            marcadorNodo.setAttribute('cy', yFinal);
+        }
+
+        sliderDias.addEventListener('input', actualizarSimuladorGrafico);
+
+
+        // --- 8. SISTEMA DE ACORDEÓN PARA FAQS ---
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            const isHidden = content.classList.contains('hidden');
+            
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        window.onload = function() {
+            actualizarCalculos();
+            actualizarSimuladorGrafico();
+            showNotification(
+                "NaturXcell Premium", 
+                "Estructura tipográfica y responsive unificada sin errores de diseño.", 
+                "success"
+            );
+        };
+    </script>
+
+</body>
+</html>
